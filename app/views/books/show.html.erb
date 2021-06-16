@@ -2,26 +2,27 @@
   <p id="notice"></p>
   <div class="container">
     <div class="row">
-      <%= render 'layouts/user_info' %>
+      
+      <%= render "layouts/user_info", user: @user %>
       <div class="col-md-8 offset-md-1">
         <h2>Book detail</h2>
         <table class="table">
           <tbody>
             <tr>
               <td>
-                
+                <!--<%= @user.name %>-->
               </td>
               <td>
-              
+                <%= @book.title %>
               </td>
               <td>
-                
+                <%= @book.body %>
               </td>
               <td>
-                <%= link_to "Edit",edit_book_path(@book.id) %>
+                <%= link_to "Edit",edit_book_path(@book.id),class:"btn btn-sm btn-success"  %>
               </td>
               <td>
-                
+                <%= link_to "Destroy", destroy_book_path(@book.id), method: :delete,  "data-confirm" => "本当に消しますか？",class:"btn btn-sm btn-danger " %>
               </td>
             </tr>
           </tbody>
