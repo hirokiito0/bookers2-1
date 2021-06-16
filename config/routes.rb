@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index,:update,:edit]
   post 'books' => 'books#create'
   delete 'books/:id' => 'books#destroy', as: 'destroy_book'
-  
+  patch 'books/:id' => 'books#update', as: 'update_book'
 end
