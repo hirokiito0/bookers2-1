@@ -9,7 +9,7 @@
         <%= render 'layouts/user_info' ,user: @user %>
         <div class="col-md-8 offset-md-1">
         <h2>Books</h2>
-        
+
           <table class="table table-haver table-inverse">
             <thead>
               <tr>
@@ -20,23 +20,23 @@
               </tr>
             </thead>
             <tbody>
-   
+              <% @books.each do |book| %>
                 <tr>
                   <td>
-                    <!--<= user.profile_image %>-->
+                    <%= attachment_image_tag book.user, :profile_image, :fill, 50, 50, format: 'jpeg' %>
                   </td>
                   <td>
-                    <!--<= book.name %>-->
+                    <%= link_to book_path(book.id) do %>
+                      <%= book.title %>
+                    <% end %>
                   </td>
-                  <td>
-                    <= book.body %>
-                  </td>
+                  <td><%= book.body %></td>
                 </tr>
-
+              <% end %>
             </tbody>
           </table>
         </div>
-            
+
 
       </div>
     </div>
