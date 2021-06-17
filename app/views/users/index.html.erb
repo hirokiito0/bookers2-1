@@ -1,5 +1,10 @@
 <main>
-    <p id="notice">Signed in successfully.</p>
+    <% if flash[:notice] %>
+      <div class="alert alert-primary" role="alert">
+        <%= notice %>
+      </div>
+    <% end %>
+    
     <div class="container px-5 px-sm-0">
       <div class="row">
         <%= render 'layouts/user_info',user: @user %>

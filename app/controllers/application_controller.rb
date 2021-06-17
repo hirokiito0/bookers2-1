@@ -1,14 +1,13 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!,except: [:top]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-      if current_user
-        flash[:notice] = "ログインに成功しました"
-        books_path  
-      else
-        flash[:notice] = "新規登録完了しました。次に名前を入力してください"
-        new_profile_path  
-      end
+    user_path(resource)
+  end
+
+  def after_sign_out_path_for(resource)
+    root_path
   end
 
   private

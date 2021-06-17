@@ -2,8 +2,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     # @books = @user.books.page(params[:page]).reverse_order
-    # before_action :logged_in_user, only: [:index, :edit, :update]
-    # before_action :correct_user,   only: [:edit, :update]
     # @post_images = @user.post_images.page(params[:page]).reverse_order
   end
 
@@ -16,12 +14,22 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if @user == current_user
+      render "edit"
+    else
+      redirect_to users_path
+    end
   end
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user)
+    if @user.update(user_params)
+      flash[:notice] = "You have updated user successfully."
+      redirect_to user_path(@user)
+    else
+      render:edit
+    end
+    
   end
 
   def user_params
