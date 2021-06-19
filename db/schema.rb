@@ -20,14 +20,6 @@ ActiveRecord::Schema.define(version: 2021_06_16_085318) do
     t.string "user_id"
   end
 
-  create_table "introductions", force: :cascade do |t|
-    t.text "comment"
-    t.integer "user_id"
-    t.integer "post_image_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "post_images", force: :cascade do |t|
     t.text "shop_name"
     t.string "image_id"
@@ -51,9 +43,9 @@ ActiveRecord::Schema.define(version: 2021_06_16_085318) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
+    t.string "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "introduction"
     t.string "profile_image_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

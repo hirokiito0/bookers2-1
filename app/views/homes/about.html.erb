@@ -1,5 +1,9 @@
 <main>
-  <p id="notice"></p>
+  <% if flash[:notice] %>
+      <div class="alert alert-primary" role="alert">
+        <%= notice %>
+      </div>
+  <% end %>
   <div class="container">
     <div class="row">
       <h1 class="px-3 mx-auto">Welcome to <i class="fas fa-book"></i><strong>Bookers</strong>!</h1>
